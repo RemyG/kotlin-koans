@@ -12,13 +12,15 @@ fun example() {
 }
 
 fun todoTask4(collection: Collection<Int>): Nothing = TODO(
-    """
+        """
         Task 4.
         Rewrite 'JavaCode4.task4()' in Kotlin using lambdas.
         You can find the appropriate function to call on 'Collection' by using code completion.
         Don't use the class 'Iterables'.
     """,
-    documentation = doc4(),
-    references = { JavaCode4().task4(collection) })
+        documentation = doc4(),
+        references = { JavaCode4().task4(collection) })
 
-fun task4(collection: Collection<Int>): Boolean = todoTask4(collection)
+fun task4(collection: Collection<Int>): Boolean {
+    return collection.stream().anyMatch({ n: Int -> n % 42 == 0 })
+}
